@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mssql:
+    container_name: amplusmed_sqlserver
+    image: mcr.microsoft.com/mssql/server
+    user: root
+    # volumes:
+    #   - ./sql_server:/var/opt/mssql/data
+    env_file:
+      - .env
+    environment:
+      - MSSQL_SA_PASSWORD=${DB_PASSWORD}
+      - MSSQL_TCP_PORT=${DB_PORT}
+      - MSSQL_IP_ADDRESS=${DB_HOST}
+      - ACCEPT_EULA='Y'
+    ports:
+      - 1433:${DB_PORT}

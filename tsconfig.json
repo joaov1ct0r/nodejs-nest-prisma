@@ -1,21 +1,39 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "target": "es2021",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@utils/*": ["src/utils/*"],
+      "@mappers/*": ["src/mappers/*"],
+      "@resources/*": ["src/resources/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@services/*": ["src/services/*"],
+      "@pipes/*": ["src/pipes/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@guards/*": ["src/guards/*"],
+      "@middlewares/*": ["src/middlewares/*"]
+    },
+    "typeRoots": ["./src/types", "./node_modules", "./node_modules/@types"],
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
     "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": false,
+    "types": ["vitest/globals", "multer"]
+  },
+  "exclude": ["./node_modules", "./dist"],
+  "include": ["./src/**/*.ts", "./src/types/*.d.ts"]
 }
