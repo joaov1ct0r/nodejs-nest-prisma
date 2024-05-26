@@ -14,6 +14,7 @@ lerna-debug.log*
 # OS
 .DS_Store
 /sql_server
+/data
 usermodel
 business.txt
 rf.md
