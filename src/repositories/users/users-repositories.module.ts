@@ -11,6 +11,13 @@ import { FindUserByEmailRepositoryImp } from '@interfaces/repositories/users/fin
 import { FindUserByEmailRepository } from '@repositories/users/find-user-by-email.repository';
 import { CreateUserRepositoryImp } from '@interfaces/repositories/users/create-user.repository';
 import { CreateUserRepository } from '@repositories/users/create-user.repository';
+import { DeleteUserRepositoryImp } from '@interfaces/repositories/users/delete-user.repository';
+import { DeleteUserRepository } from '@repositories/users/delete-user.repository';
+
+const deleteUserRepositoryProvider = {
+  provide: DeleteUserRepositoryImp,
+  useClass: DeleteUserRepository,
+};
 
 const createUserRepositoryProvider = {
   provide: CreateUserRepositoryImp,
@@ -44,6 +51,7 @@ const countUsersRepositoryProvider = {
 
 @Module({
   exports: [
+    deleteUserRepositoryProvider,
     createUserRepositoryProvider,
     findUserByEmailRepositoryProvider,
     findUserByUsernameRepositoryProvider,
@@ -52,6 +60,7 @@ const countUsersRepositoryProvider = {
     getAllUsersRepositoryProvider,
   ],
   providers: [
+    deleteUserRepositoryProvider,
     createUserRepositoryProvider,
     findUserByEmailRepositoryProvider,
     findUserByUsernameRepositoryProvider,
