@@ -1,5 +1,5 @@
 import { BadRequestException } from '@nestjs/common';
-import { CreateEventLogServiceImp } from '@services/logs/create-event-log.service';
+import { CreateEventLogServiceImp } from '@interfaces/services/logs/create-event-log.service';
 
 export abstract class BaseController {
   protected readonly _createEventLogService: CreateEventLogServiceImp;
