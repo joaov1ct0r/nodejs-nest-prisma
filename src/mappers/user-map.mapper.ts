@@ -15,7 +15,6 @@ export class UserMap {
       username: user.username,
       email: user.email,
       createdAt: user.createdAt,
-      userWhoCreatedId: user.userWhoCreatedId,
       updatedAt: user.updatedAt,
       userWhoUpdatedId: user.userWhoUpdatedId,
     };
