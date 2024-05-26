@@ -6,6 +6,13 @@ import { CountUsersServiceImp } from '@interfaces/services/users/count-users.ser
 import { CountUsersService } from '@services/users/count-users.service';
 import { CreateUserServiceImp } from '@interfaces/services/users/create-user.service';
 import { CreateUserService } from '@services/users/create-user.service';
+import { DeleteUserServiceImp } from '@interfaces/services/users/delete-user.service';
+import { DeleteUserService } from '@services/users/delete-user.service';
+
+const deleteUserServiceProvider = {
+  provide: DeleteUserServiceImp,
+  useClass: DeleteUserService,
+};
 
 const createUserServiceProvider = {
   provide: CreateUserServiceImp,
@@ -25,11 +32,13 @@ const countUsersServiceProvider = {
 @Module({
   imports: [RepositoriesModule],
   exports: [
+    deleteUserServiceProvider,
     createUserServiceProvider,
     countUsersServiceProvider,
     getAllUsersServiceProvider,
   ],
   providers: [
+    deleteUserServiceProvider,
     createUserServiceProvider,
     countUsersServiceProvider,
     getAllUsersServiceProvider,
