@@ -33,6 +33,7 @@ const getAllUsersQuerySchema = z.object({
 export type GetAllUsersDTO = z.infer<typeof getAllUsersQuerySchema>;
 
 @Controller('/user/')
+@UseGuards(AuthGuard)
 export class GetAllUsersController extends BaseController {
   readonly #getAllUsersService: GetAllUsersServiceImp;
   readonly #countUsersService: CountUsersServiceImp;
