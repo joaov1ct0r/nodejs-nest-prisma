@@ -1,7 +1,7 @@
 import { GetAllUsersServiceImp } from '@interfaces/services/users/get-all-users.service';
 import { z } from 'zod';
 import { BaseController } from '@controllers/base.controller';
-import { CreateEventLogServiceImp } from '@services/logs/create-event-log.service';
+import { CreateEventLogServiceImp } from '@interfaces/services/logs/create-event-log.service';
 import { ZodValidationPipe } from '@src/pipes/zod-validation.pipe';
 import { CountUsersServiceImp } from '@interfaces/services/users/count-users.service';
 import { Request } from 'express';
