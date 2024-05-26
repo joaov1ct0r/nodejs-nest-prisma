@@ -5,7 +5,6 @@ export interface UserImp {
   name: string;
   password: string;
   createdAt: Date;
-  userWhoCreatedId: string | null;
   updatedAt: Date | null;
   userWhoUpdatedId: string | null;
 }
@@ -16,7 +15,6 @@ export interface UserDTO {
   email: string;
   name: string;
   createdAt: Date;
-  userWhoCreatedId: string | null;
   updatedAt: Date | null;
   userWhoUpdatedId: string | null;
 }

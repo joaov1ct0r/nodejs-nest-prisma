@@ -7,7 +7,6 @@ export class User {
   #name: string;
   #password: string;
   #createdAt: Date;
-  #userWhoCreatedId: string | null;
   #updatedAt: Date | null;
   #userWhoUpdatedId: string | null;
 
@@ -18,7 +17,6 @@ export class User {
     name,
     password,
     createdAt,
-    userWhoCreatedId,
     updatedAt,
     userWhoUpdatedId,
   }: UserImp) {
@@ -28,7 +26,6 @@ export class User {
     this.#name = name;
     this.#password = password;
     this.#createdAt = createdAt;
-    this.#userWhoCreatedId = userWhoCreatedId;
     this.#updatedAt = updatedAt;
     this.#userWhoUpdatedId = userWhoUpdatedId;
   }
@@ -79,14 +76,6 @@ export class User {
 
   set createdAt(createdAt: Date) {
     this.#createdAt = createdAt;
-  }
-
-  get userWhoCreatedId(): string | null {
-    return this.#userWhoCreatedId;
-  }
-
-  set userWhoCreatedId(userWhoCreatedId: string | null) {
-    this.#userWhoCreatedId = userWhoCreatedId;
   }
 
   get updatedAt(): Date | null {
