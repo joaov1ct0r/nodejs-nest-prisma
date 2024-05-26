@@ -60,6 +60,7 @@ export class SignInController extends BaseController {
     });
 
     return {
+      token,
       statusCode: 201,
       resource: user,
       message: 'Autenticação realizada com sucesso!',
