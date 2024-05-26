@@ -4,6 +4,13 @@ import { GetAllUsersService } from '@services/users/get-all.service';
 import { RepositoriesModule } from '@repositories/repositories.module';
 import { CountUsersServiceImp } from '@interfaces/services/users/count-users.service';
 import { CountUsersService } from '@services/users/count-users.service';
+import { CreateUserServiceImp } from '@interfaces/services/users/create-user.service';
+import { CreateUserService } from '@services/users/create-user.service';
+
+const createUserServiceProvider = {
+  provide: CreateUserServiceImp,
+  useClass: CreateUserService,
+};
 
 const getAllUsersServiceProvider = {
   provide: GetAllUsersServiceImp,
@@ -17,7 +24,15 @@ const countUsersServiceProvider = {
 
 @Module({
   imports: [RepositoriesModule],
-  exports: [countUsersServiceProvider, getAllUsersServiceProvider],
-  providers: [countUsersServiceProvider, getAllUsersServiceProvider],
+  exports: [
+    createUserServiceProvider,
+    countUsersServiceProvider,
+    getAllUsersServiceProvider,
+  ],
+  providers: [
+    createUserServiceProvider,
+    countUsersServiceProvider,
+    getAllUsersServiceProvider,
+  ],
 })
 export class UsersServicesModule {}
