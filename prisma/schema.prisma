@@ -22,8 +22,8 @@ model User {
   createdAt        DateTime   @default(now())
   updatedAt        DateTime?  @updatedAt
   userWhoUpdatedId String?
-  ErrorLog         ErrorLog[]
-  EventLog         EventLog[]
+  ErrorLogs        ErrorLog[]
+  EventLogs        EventLog[]
 
   UserWhoUpdated User?  @relation("UserUpdatingHistory", fields: [userWhoUpdatedId], references: [id], onUpdate: NoAction, onDelete: NoAction)
   updatedUsers   User[] @relation("UserUpdatingHistory")
@@ -33,20 +33,20 @@ model User {
 
 model ErrorLog {
   id          String   @id @default(uuid())
-  userId      String
+  userId      String?
   timestamp   DateTime @default(now())
   code        Int
   description String
 
-  User User @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+  User User? @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: SetNull)
 }
 
 model EventLog {
   id          String   @id @default(uuid())
-  userId      String
+  userId      String?
   timestamp   DateTime @default(now())
   code        Int
   description String
 
-  User User @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+  User User? @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: SetNull)
 }
