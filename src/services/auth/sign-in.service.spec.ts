@@ -84,7 +84,6 @@ describe('sign in service [unit]', () => {
         password: 'any_other_password',
         username: 'any_username',
         userWhoUpdatedId: null,
-        userWhoCreatedId: 'any_other_user_id',
         updatedAt: null,
         createdAt: new Date(),
         email: 'any_email',
@@ -111,7 +110,6 @@ describe('sign in service [unit]', () => {
         email: 'any_email',
         createdAt: new Date(),
         updatedAt: null,
-        userWhoCreatedId: 'any_other_user_id',
         userWhoUpdatedId: null,
       }),
     );
