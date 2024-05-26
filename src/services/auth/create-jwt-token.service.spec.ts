@@ -1,10 +1,15 @@
+import { EnvHelper } from '@helpers/env.helper';
+import { ConfigService } from '@nestjs/config';
 import { JwtService, JwtSignOptions } from '@nestjs/jwt';
 import { CreateJWTService } from '@services/auth/create-jwt-token.service';
 import { MockInstance } from 'vitest';
+import { EnvSchema } from '@src/env';
 
 const makeSut = () => {
+  const configService: ConfigService<EnvSchema, true> = new ConfigService();
+  const envHelper = new EnvHelper(configService);
   const jwtService = new JwtService();
-  const sut = new CreateJWTService(jwtService);
+  const sut = new CreateJWTService(jwtService, envHelper);
 
   return { sut };
 };
@@ -15,10 +20,16 @@ describe('create jwt service [unit]', () => {
     Promise<string>
   >;
 
-  beforeAll(() => {
-    jwtServiceSpy = vi.spyOn(JwtService.prototype, 'signAsync');
+  let envHelperSpy: MockInstance<[key: keyof EnvSchema], string>;
 
+  beforeAll(() => {
+    vi.stubEnv('JWT_TOKEN_SECRET', 'secret');
+
+    jwtServiceSpy = vi.spyOn(JwtService.prototype, 'signAsync');
     jwtServiceSpy.mockResolvedValueOnce('token');
+
+    envHelperSpy = vi.spyOn(EnvHelper.prototype, 'get');
+    envHelperSpy.mockResolvedValueOnce('secret');
   });
 
   beforeEach(() => {
@@ -37,5 +48,6 @@ describe('create jwt service [unit]', () => {
 
   afterAll(() => {
     vi.restoreAllMocks();
+    vi.unstubAllEnvs();
   });
 });
