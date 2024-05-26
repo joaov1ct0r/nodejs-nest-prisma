@@ -1,18 +1,17 @@
 version: '3.8'
 
 services:
-  mssql:
-    container_name: amplusmed_sqlserver
-    image: mcr.microsoft.com/mssql/server
-    user: root
-    # volumes:
-    #   - ./sql_server:/var/opt/mssql/data
+  postgres:
+    container_name: nodejs-typescript-prisma-api-pg
+    image: postgres
+    ports:
+      - 5432:${DB_PORT}
     env_file:
       - .env
     environment:
-      - MSSQL_SA_PASSWORD=${DB_PASSWORD}
-      - MSSQL_TCP_PORT=${DB_PORT}
-      - MSSQL_IP_ADDRESS=${DB_HOST}
-      - ACCEPT_EULA='Y'
-    ports:
-      - 1433:${DB_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - PGDATA=${PGDATA}
+    volumes:
+      - ./data/pg:/data/postgres
