@@ -4,6 +4,7 @@ import { ServicesModule } from '@services/services.module';
 import { CreateUserController } from '@controllers/users/create-user.controller';
 import { GuardsModule } from '@guards/guards.module';
 import { DeleteUserController } from '@controllers/users/delete-user.controller';
+import { EditUserController } from '@controllers/users/edit-user.controller';
 
 @Module({
   imports: [ServicesModule, GuardsModule],
@@ -11,6 +12,7 @@ import { DeleteUserController } from '@controllers/users/delete-user.controller'
     CreateUserController,
     GetAllUsersController,
     DeleteUserController,
+    EditUserController,
   ],
 })
 export class UsersControllerModule {}
