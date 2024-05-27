@@ -25,7 +25,6 @@ export class UserMap {
       name: user.name,
       username: user.username,
       email: user.email,
-      updatedAt: user.updatedAt,
       userWhoUpdatedId: user.userWhoUpdatedId,
       password: user.password,
     };

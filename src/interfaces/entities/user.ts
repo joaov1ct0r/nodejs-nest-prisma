@@ -23,7 +23,6 @@ export interface UserPersistance {
   username: string;
   email: string;
   name: string;
-  password: string;
-  updatedAt: Date | null;
+  password?: string;
   userWhoUpdatedId: string | null;
 }
