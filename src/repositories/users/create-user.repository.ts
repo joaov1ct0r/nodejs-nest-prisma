@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaProvider } from '@src/lib/prisma';
 import { UserMap } from '@mappers/user-map.mapper';
+import { User } from '@entities/user';
 import {
   CreateUserRepositoryImp,
   CreateUserRepositoryDTO,
