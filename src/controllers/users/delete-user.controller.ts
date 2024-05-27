@@ -53,10 +53,6 @@ export class DeleteUserController extends BaseController {
       description: `Usuário com id: ${deletedUser.id} deletado com sucesso pelo usuário: ${req.token.userId}`,
     });
 
-    return {
-      resource: deletedUser,
-      statusCode: 204,
-      message: 'Usuário deletado com sucesso!',
-    };
+    return '';
   }
 }
